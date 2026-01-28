@@ -37,7 +37,7 @@
             overflow-x: hidden;
         }
 
-        /* Animated background elements */
+        /* Static background elements - no animation */
         body::before {
             content: '';
             position: absolute;
@@ -48,7 +48,6 @@
             background: radial-gradient(circle, var(--accent) 0%, transparent 70%);
             opacity: 0.06;
             border-radius: 50%;
-            animation: float 20s ease-in-out infinite;
         }
 
         body::after {
@@ -61,12 +60,6 @@
             background: radial-gradient(circle, var(--primary) 0%, transparent 70%);
             opacity: 0.05;
             border-radius: 50%;
-            animation: float 25s ease-in-out infinite reverse;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translate(0, 0) scale(1); }
-            50% { transform: translate(30px, -30px) scale(1.1); }
         }
 
         .container {
@@ -460,17 +453,6 @@
             // The download will proceed via the href URL
             // You can add custom logic here if needed
         });
-
-        // Add subtle parallax effect only on desktop (not on mobile/touch devices)
-        if (window.matchMedia('(min-width: 768px)').matches && !('ontouchstart' in window)) {
-            document.addEventListener('mousemove', (e) => {
-                const moveX = (e.clientX - window.innerWidth / 2) * 0.01;
-                const moveY = (e.clientY - window.innerHeight / 2) * 0.01;
-                
-                document.body.style.setProperty('--mouse-x', `${moveX}px`);
-                document.body.style.setProperty('--mouse-y', `${moveY}px`);
-            });
-        }
     </script>
 </body>
 </html>
